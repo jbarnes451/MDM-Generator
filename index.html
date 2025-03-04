@@ -121,56 +121,102 @@
 
             let mdmText = "";
 
-            // Expanded logic for generating MDM based on chief complaint
+            // Individualized MDM logic for each chief complaint
             switch(chiefComplaint.toLowerCase()) {
                 case "chest pain":
-                    mdmText = `The patient presents with chest pain. Differential diagnosis includes myocardial infarction, unstable angina, and musculoskeletal pain. A 12-lead ECG was obtained and showed no signs of ischemia, and cardiac enzymes are negative. Given the patient's risk factors, further workup including a chest x-ray and a stress test will be ordered to rule out any underlying coronary artery disease. The patient will be monitored and reassessed as needed.`;
+                    mdmText = `The patient presented with chest pain. Differential diagnosis included myocardial infarction, unstable angina, and musculoskeletal pain. A 12-lead ECG was obtained, which showed no signs of ischemia, and cardiac enzymes were negative. Given the patient's low HEART score, indicating a low risk for adverse cardiac events, the decision was made to admit for observation, and further workup, including a chest x-ray, was ordered. The patient was reassured, and pain management was initiated.`;
                     break;
                 case "shortness of breath":
-                    mdmText = `The patient presents with shortness of breath. Differential diagnosis includes acute asthma exacerbation, pneumonia, and congestive heart failure. A chest x-ray was obtained, which showed no signs of pneumonia or pulmonary edema. The patient's oxygen saturation improved after administration of bronchodilators. Given the lack of acute findings, the patient will be treated symptomatically and observed for response. Follow-up will be arranged as necessary.`;
+                    mdmText = `The patient presented with shortness of breath. Differential diagnosis included acute asthma exacerbation, pneumonia, and congestive heart failure. A chest x-ray was obtained, which showed no signs of pneumonia or pulmonary edema, and the patient’s oxygen saturation improved following bronchodilator therapy. A BNP level was drawn, which came back within normal limits, further suggesting that heart failure was not the cause. The patient was treated symptomatically and observed for improvement.`;
                     break;
                 case "abdominal pain":
-                    mdmText = `The patient presents with abdominal pain. Differential diagnosis includes appendicitis, diverticulitis, and gastroenteritis. A physical examination revealed localized tenderness in the right lower quadrant, and laboratory tests indicate an elevated white blood cell count. Given the patient's clinical presentation and lab findings, a CT scan of the abdomen will be performed to evaluate for appendicitis. Pain management and IV fluids will be initiated while awaiting results.`;
+                    mdmText = `The patient presented with abdominal pain. Differential diagnosis included appendicitis, diverticulitis, and gastroenteritis. Physical examination revealed localized tenderness in the right lower quadrant, and laboratory tests showed an elevated white blood cell count. A CT scan of the abdomen was performed, which revealed no evidence of appendicitis. The patient was reassured, given pain management, and advised to follow up if symptoms persisted.`;
                     break;
                 case "headache":
-                    mdmText = `The patient presents with a headache. Differential diagnosis includes tension-type headache, migraine, and secondary causes such as subarachnoid hemorrhage. A thorough neurological exam was performed and a non-contrast CT of the head was obtained, which showed no signs of acute intracranial pathology. Given the patient's symptoms and lack of concerning neurological findings, the patient will be treated symptomatically with analgesics and follow-up will be arranged.`;
+                    mdmText = `The patient presented with a headache. Differential diagnosis included tension-type headache, migraine, and secondary causes such as subarachnoid hemorrhage. A thorough neurological examination was performed, and a non-contrast CT of the head was obtained, which showed no acute intracranial pathology. Given the patient’s low PECARN score, indicating a low risk for serious pathology in pediatric headache cases, the decision was made to treat symptomatically and reassess if necessary.`;
                     break;
                 case "back pain":
-                    mdmText = `The patient presents with back pain. Differential diagnosis includes lumbar strain, herniated disc, and renal colic. A physical examination revealed restricted range of motion, and a urine analysis showed no signs of infection. The patient will be treated with NSAIDs and instructed on proper posture and body mechanics. If symptoms persist or worsen, imaging may be required.`;
+                    mdmText = `The patient presented with back pain. Differential diagnosis included lumbar strain, herniated disc, and renal colic. Physical examination revealed restricted range of motion, and urine analysis showed no evidence of infection. Imaging studies, including an X-ray, revealed no fractures. The patient was reassured, advised on proper posture and body mechanics, and treated with NSAIDs. Follow-up was scheduled if symptoms persisted.`;
                     break;
                 case "fever":
-                    mdmText = `The patient presents with a fever. Differential diagnosis includes viral upper respiratory infection, urinary tract infection, and pneumonia. A physical examination revealed no focal findings, and laboratory tests showed a mild leukocytosis. Given the lack of localizing symptoms, supportive care with fluids and antipyretics will be provided, and follow-up will be arranged in case symptoms worsen.`;
+                    mdmText = `The patient presented with a fever. Differential diagnosis included viral upper respiratory infection, urinary tract infection, and pneumonia. A physical examination revealed no focal findings, and laboratory tests showed mild leukocytosis. A chest x-ray was performed, which was negative for pneumonia, and a urinalysis was obtained, which showed no signs of infection. The patient was reassured, given supportive care with fluids and antipyretics, and instructed to follow up if symptoms worsened.`;
                     break;
                 case "dizziness":
-                    mdmText = `The patient presents with dizziness. Differential diagnosis includes benign paroxysmal positional vertigo (BPPV), vestibular neuritis, and orthostatic hypotension. A thorough examination of the vestibular system was performed, and the patient was instructed on maneuvers to relieve symptoms. No concerning signs of a central cause were noted, and the patient will be observed for further symptoms. Follow-up will be arranged if symptoms persist.`;
+                    mdmText = `The patient presented with dizziness. Differential diagnosis included benign paroxysmal positional vertigo (BPPV), vestibular neuritis, and orthostatic hypotension. A thorough examination, including the Dix-Hallpike maneuver, was performed, and the patient was diagnosed with BPPV. No concerning signs of a central cause were noted. The patient was reassured and instructed on repositioning maneuvers to alleviate symptoms. Follow-up was arranged in case symptoms persisted.`;
                     break;
                 case "nausea and vomiting":
-                    mdmText = `The patient presents with nausea and vomiting. Differential diagnosis includes gastroenteritis, food poisoning, and metabolic disorders. A thorough examination and laboratory tests revealed no signs of dehydration or electrolyte imbalance. The patient will be treated symptomatically with antiemetics and IV fluids, and follow-up will be arranged in case symptoms persist.`;
+                    mdmText = `The patient presented with nausea and vomiting. Differential diagnosis included gastroenteritis, food poisoning, and metabolic disorders. A physical examination and laboratory tests showed no signs of dehydration or electrolyte imbalance. The patient was reassured and treated symptomatically with antiemetics and IV fluids. Follow-up was arranged if symptoms persisted.`;
                     break;
                 case "cough":
-                    mdmText = `The patient presents with a cough. Differential diagnosis includes viral upper respiratory infection, pneumonia, and chronic obstructive pulmonary disease (COPD) exacerbation. A chest x-ray was obtained, which showed no signs of pneumonia. The patient will be treated symptomatically with cough suppressants, and a follow-up appointment will be scheduled if symptoms persist.`;
+                    mdmText = `The patient presented with a cough. Differential diagnosis included viral upper respiratory infection, pneumonia, and chronic obstructive pulmonary disease (COPD) exacerbation. A chest x-ray was obtained, which showed no signs of pneumonia, and the patient’s oxygen saturation remained normal. The patient was treated with symptomatic therapy, including cough suppressants, and follow-up was scheduled if symptoms persisted.`;
                     break;
                 case "syncope":
-                    mdmText = `The patient presents with syncope. Differential diagnosis includes vasovagal syncope, arrhythmia, and orthostatic hypotension. A thorough examination was conducted, including an ECG, which showed no signs of arrhythmia. The patient was monitored and given fluids, and further outpatient follow-up will be arranged for monitoring.`;
+                    mdmText = `The patient presented with syncope. Differential diagnosis included vasovagal syncope, arrhythmia, and orthostatic hypotension. A thorough examination was conducted, including an ECG, which showed normal sinus rhythm, and a tilt-table test was negative. The patient was reassured and instructed to avoid triggering factors. Follow-up was arranged with cardiology for further monitoring.`;
                     break;
                 case "trauma":
-                    mdmText = `The patient presents after a trauma. The differential diagnosis includes soft tissue injuries, fractures, and internal injuries. A thorough physical examination and imaging studies were conducted to assess for fractures or internal bleeding. Based on findings, appropriate treatment will be initiated, including pain management and possible referral for further surgical evaluation.`;
+                    mdmText = `The patient presented after trauma. The differential diagnosis included soft tissue injuries, fractures, and internal injuries. A physical examination and imaging studies were conducted, including a CT scan, which revealed no acute fractures or internal bleeding. The patient was treated with analgesics, and a referral was made to orthopedic surgery for follow-up.`;
                     break;
-                // Continue for the remaining complaints...
-                // Each complaint here will follow the same structure as above.
-
-                // Add more cases for other chief complaints here...
-
-                default:
-                    mdmText = `The patient presents with a complaint of ${chiefComplaint}. A thorough history and physical exam will be performed, and appropriate diagnostic testing will be ordered based on the suspected differential diagnosis. Management will be tailored accordingly.`;
+                case "fracture":
+                    mdmText = `The patient presented with a suspected fracture. Differential diagnosis included simple fractures, displaced fractures, and soft tissue injuries. X-rays were obtained, which confirmed a closed fracture of the distal radius. The patient was reassured, a splint was applied, and pain management was initiated. The patient was referred to orthopedic surgery for follow-up.`;
+                    break;
+                case "weakness":
+                    mdmText = `The patient presented with generalized weakness. Differential diagnosis included electrolyte imbalances, neurological disorders, and systemic infections. A comprehensive workup, including a basic metabolic panel and neurological exam, was performed, revealing no significant findings. The patient was reassured, given IV fluids, and monitored for improvement. Follow-up was recommended if symptoms persisted.`;
+                    break;
+                case "sore throat":
+                    mdmText = `The patient presented with a sore throat. Differential diagnosis included viral pharyngitis, bacterial tonsillitis, and streptococcal infection. A rapid strep test was negative, and a throat culture was also taken. The patient was reassured and treated symptomatically with analgesics and warm saline gargles. Follow-up was recommended if symptoms worsened.`;
+                    break;
+                case "seizure":
+                    mdmText = `The patient presented with a seizure. Differential diagnosis included epilepsy, hypoglycemia, and electrolyte imbalance. A thorough history and physical examination were performed, and lab tests, including a glucose level, were normal. A CT scan of the brain was obtained, which showed no acute intracranial pathology. The patient was started on anticonvulsant therapy and was advised to follow up with neurology.`;
+                    break;
+                case "rash":
+                    mdmText = `The patient presented with a rash. Differential diagnosis included viral exanthems, allergic reactions, and autoimmune diseases. A detailed skin examination was performed, and laboratory tests, including a complete blood count, were unremarkable. The rash was determined to be a benign viral exanthem. The patient was reassured, treated symptomatically with antihistamines, and advised to follow up if new symptoms arose.`;
+                    break;
+                case "diarrhea":
+                    mdmText = `The patient presented with diarrhea. Differential diagnosis included gastroenteritis, food poisoning, and inflammatory bowel disease. Stool tests were obtained, which were negative for bacterial pathogens. The patient was reassured, treated with supportive care, and advised to follow up if symptoms worsened or persisted.`;
+                    break;
+                case "constipation":
+                    mdmText = `The patient presented with constipation. Differential diagnosis included dietary factors, irritable bowel syndrome, and mechanical obstruction. A physical examination and abdominal X-ray were performed, which showed no signs of bowel obstruction. The patient was treated with laxatives and fiber supplementation, and advised to increase fluid intake. Follow-up was recommended if symptoms did not improve.`;
+                    break;
+                case "leg swelling":
+                    mdmText = `The patient presented with leg swelling. Differential diagnosis included deep vein thrombosis (DVT), heart failure, and lymphedema. A Doppler ultrasound of the leg was performed, which showed no signs of DVT. The patient was reassured and advised to elevate the leg and monitor for any changes.`;
+                    break;
+                case "hematuria":
+                    mdmText = `The patient presented with hematuria. Differential diagnosis included urinary tract infection, kidney stones, and bladder cancer. A urinalysis was performed, which showed no signs of infection. A CT scan of the abdomen and pelvis was obtained, which revealed no evidence of stones or other abnormal findings. The patient was reassured and advised to follow up if symptoms persisted.`;
+                    break;
+                case "jaundice":
+                    mdmText = `The patient presented with jaundice. Differential diagnosis included hepatitis, biliary obstruction, and hemolytic anemia. Liver function tests were obtained, which showed mildly elevated transaminases. An abdominal ultrasound was performed, which revealed no evidence of biliary obstruction. The patient was reassured and advised to follow up with their primary care provider for further evaluation.`;
+                    break;
+                case "dysuria":
+                    mdmText = `The patient presented with dysuria. Differential diagnosis included urinary tract infection, bladder infection, and sexually transmitted infections. A urinalysis was obtained, which showed no signs of infection. The patient was reassured, treated symptomatically with pain relievers, and advised to follow up if symptoms did not resolve.`;
+                    break;
+                case "dehydration":
+                    mdmText = `The patient presented with signs of dehydration. Differential diagnosis included gastrointestinal fluid loss, poor oral intake, and diabetic ketoacidosis. A basic metabolic panel was obtained, which showed no significant electrolyte abnormalities. IV fluids were administered, and the patient was reassured and advised to increase fluid intake.`;
+                    break;
+                case "palpitations":
+                    mdmText = `The patient presented with palpitations. Differential diagnosis included arrhythmia, anxiety, and hyperthyroidism. An ECG was performed, which showed normal sinus rhythm. A thyroid function test was also within normal limits. The patient was reassured and instructed to monitor for any further symptoms.`;
+                    break;
+                case "altered mental status":
+                    mdmText = `The patient presented with altered mental status. Differential diagnosis included hypoglycemia, stroke, and infection. A glucose level was drawn, which was normal, and a CT scan of the brain was performed, which showed no acute pathology. The patient was treated with IV fluids and observed.`;
+                    break;
+                case "ankle injury":
+                    mdmText = `The patient presented with an ankle injury. Differential diagnosis included sprain, fracture, and tendon injury. An X-ray of the ankle was performed, which revealed no fractures. The patient was reassured, provided with a splint, and advised to follow up with orthopedic care.`;
+                    break;
+                case "pregnancy":
+                    mdmText = `The patient presented with concerns related to pregnancy. Differential diagnosis included threatened miscarriage, ectopic pregnancy, and normal pregnancy. A urine pregnancy test was positive, and an ultrasound showed an intrauterine pregnancy. The patient was reassured, provided with prenatal vitamins, and instructed to follow up with obstetrics.`;
+                    break;
+                case "ear pain":
+                    mdmText = `The patient presented with ear pain. Differential diagnosis included otitis media, otitis externa, and temporomandibular joint disorder. A physical examination was performed, and an otoscopic examination revealed no signs of infection. The patient was reassured and treated with analgesics, and follow-up was advised if symptoms persisted.`;
+                    break;
+                case "tooth pain":
+                    mdmText = `The patient presented with tooth pain. Differential diagnosis included dental abscess, caries, and gum disease. An oral examination revealed no signs of abscess or acute infection. The patient was treated with analgesics and referred to a dentist for further management.`;
+                    break;
+                case "urinary retention":
+                    mdmText = `The patient presented with urinary retention. Differential diagnosis included benign prostatic hyperplasia, urinary tract obstruction, and neurogenic bladder. A bladder scan revealed a post-void residual volume within normal limits, and the patient was reassured and instructed to follow up with urology.`;
                     break;
             }
 
-            // Output the MDM paragraph
-            document.getElementById("mdmOutput").innerHTML = "<strong>MDM:</strong> " + mdmText;
+            document.getElementById("mdmOutput").innerText = mdmText;
         }
     </script>
 </body>
 </html>
-
-
