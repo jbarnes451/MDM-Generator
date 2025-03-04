@@ -31,7 +31,8 @@
             border-radius: 4px;
         }
         button {
-            width: 600px;
+            width: 100%; /* Adjusted for responsiveness */
+            max-width: 600px; /* Ensures button does not exceed the container's width */
             padding: 10px;
             font-size: 16px;
             color: white;
@@ -51,12 +52,28 @@
             border-radius: 4px;
         }
         select, input[type="text"] {
-            width: 600px;
+            width: 100%; /* Ensures full container width */
+            max-width: 600px; /* Prevents exceeding the container width */
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            select, input[type="text"], button {
+                width: 100%;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -184,38 +201,41 @@
                     mdmText = `The patient presented with hematuria. Differential diagnosis included urinary tract infection, kidney stones, and bladder cancer. A urinalysis was performed, which showed no signs of infection. A CT scan of the abdomen and pelvis was obtained, which revealed no evidence of stones or other abnormal findings. The patient was reassured and advised to follow up if symptoms persisted.`;
                     break;
                 case "jaundice":
-                    mdmText = `The patient presented with jaundice. Differential diagnosis included hepatitis, biliary obstruction, and hemolytic anemia. Liver function tests were obtained, which showed mildly elevated transaminases. An abdominal ultrasound was performed, which revealed no evidence of biliary obstruction. The patient was reassured and advised to follow up with their primary care provider for further evaluation.`;
+                    mdmText = `The patient presented with jaundice. Differential diagnosis included hepatitis, biliary obstruction, and hemolytic anemia. Liver function tests were performed, which showed elevated bilirubin levels. An abdominal ultrasound was obtained, which revealed no signs of biliary obstruction. The patient was referred for further workup by a hepatologist.`;
                     break;
                 case "dysuria":
-                    mdmText = `The patient presented with dysuria. Differential diagnosis included urinary tract infection, bladder infection, and sexually transmitted infections. A urinalysis was obtained, which showed no signs of infection. The patient was reassured, treated symptomatically with pain relievers, and advised to follow up if symptoms did not resolve.`;
+                    mdmText = `The patient presented with dysuria. Differential diagnosis included urinary tract infection (UTI), bladder infection, and sexually transmitted infection (STI). A urinalysis was obtained, which was positive for leukocytes and nitrites. The patient was diagnosed with a UTI, treated with antibiotics, and advised to follow up if symptoms persisted.`;
                     break;
                 case "dehydration":
-                    mdmText = `The patient presented with signs of dehydration. Differential diagnosis included gastrointestinal fluid loss, poor oral intake, and diabetic ketoacidosis. A basic metabolic panel was obtained, which showed no significant electrolyte abnormalities. IV fluids were administered, and the patient was reassured and advised to increase fluid intake.`;
+                    mdmText = `The patient presented with dehydration. Differential diagnosis included gastrointestinal losses, excessive sweating, and diabetic ketoacidosis. A physical examination revealed signs of dehydration, and a basic metabolic panel was ordered, which showed mildly elevated creatinine. The patient was treated with IV fluids and monitored for improvement.`;
                     break;
                 case "palpitations":
-                    mdmText = `The patient presented with palpitations. Differential diagnosis included arrhythmia, anxiety, and hyperthyroidism. An ECG was performed, which showed normal sinus rhythm. A thyroid function test was also within normal limits. The patient was reassured and instructed to monitor for any further symptoms.`;
+                    mdmText = `The patient presented with palpitations. Differential diagnosis included arrhythmias, anxiety, and hyperthyroidism. An ECG was obtained, which showed sinus tachycardia but no arrhythmias. The patient was reassured, treated with beta-blockers, and referred for further workup if symptoms persisted.`;
                     break;
                 case "altered mental status":
-                    mdmText = `The patient presented with altered mental status. Differential diagnosis included hypoglycemia, stroke, and infection. A glucose level was drawn, which was normal, and a CT scan of the brain was performed, which showed no acute pathology. The patient was treated with IV fluids and observed.`;
+                    mdmText = `The patient presented with altered mental status. Differential diagnosis included hypoglycemia, infection, and neurological disorder. A comprehensive workup, including glucose levels and a CT scan of the head, was performed, and the patient was diagnosed with a urinary tract infection. The patient was treated with antibiotics and monitored closely.`;
                     break;
                 case "ankle injury":
-                    mdmText = `The patient presented with an ankle injury. Differential diagnosis included sprain, fracture, and tendon injury. An X-ray of the ankle was performed, which revealed no fractures. The patient was reassured, provided with a splint, and advised to follow up with orthopedic care.`;
+                    mdmText = `The patient presented with an ankle injury. Differential diagnosis included sprain, fracture, and tendon injury. X-rays were obtained, which showed no fractures. The patient was diagnosed with a sprain, treated with a brace and analgesics, and advised to rest and follow up if symptoms persisted.`;
                     break;
                 case "pregnancy":
-                    mdmText = `The patient presented with concerns related to pregnancy. Differential diagnosis included threatened miscarriage, ectopic pregnancy, and normal pregnancy. A urine pregnancy test was positive, and an ultrasound showed an intrauterine pregnancy. The patient was reassured, provided with prenatal vitamins, and instructed to follow up with obstetrics.`;
+                    mdmText = `The patient presented with pregnancy-related issues. Differential diagnosis included ectopic pregnancy, miscarriage, and urinary tract infection. A urine pregnancy test was positive, and an ultrasound was ordered to assess fetal viability. The patient was reassured and referred to obstetrics for follow-up.`;
                     break;
                 case "ear pain":
-                    mdmText = `The patient presented with ear pain. Differential diagnosis included otitis media, otitis externa, and temporomandibular joint disorder. A physical examination was performed, and an otoscopic examination revealed no signs of infection. The patient was reassured and treated with analgesics, and follow-up was advised if symptoms persisted.`;
+                    mdmText = `The patient presented with ear pain. Differential diagnosis included otitis media, otitis externa, and temporomandibular joint dysfunction. A physical exam was conducted, and no signs of external ear infection were observed. The patient was diagnosed with otitis media and treated with antibiotics.`;
                     break;
                 case "tooth pain":
-                    mdmText = `The patient presented with tooth pain. Differential diagnosis included dental abscess, caries, and gum disease. An oral examination revealed no signs of abscess or acute infection. The patient was treated with analgesics and referred to a dentist for further management.`;
+                    mdmText = `The patient presented with tooth pain. Differential diagnosis included dental abscess, caries, and gum disease. A physical examination revealed a tender tooth with swelling, and the patient was referred to a dentist for further evaluation and treatment.`;
                     break;
                 case "urinary retention":
-                    mdmText = `The patient presented with urinary retention. Differential diagnosis included benign prostatic hyperplasia, urinary tract obstruction, and neurogenic bladder. A bladder scan revealed a post-void residual volume within normal limits, and the patient was reassured and instructed to follow up with urology.`;
+                    mdmText = `The patient presented with urinary retention. Differential diagnosis included benign prostatic hyperplasia, urinary tract infection, and bladder stones. A bladder scan was performed, which showed significant post-void residual volume. The patient was treated with catheterization and referred for urology follow-up.`;
                     break;
+                default:
+                    mdmText = `No MDM available for the selected chief complaint. Please consult a physician.`;
             }
 
-            document.getElementById("mdmOutput").innerText = mdmText;
+            // Output the generated MDM
+            document.getElementById("mdmOutput").textContent = mdmText;
         }
     </script>
 </body>
