@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ED MDM Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #mdmOutput {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ED MDM Generator</h1>
+        <p>Enter the chief complaint, and this tool will generate a standard succinct MDM paragraph for an Emergency Department note.</p>
+        
+        <textarea id="chiefComplaint" placeholder="Enter the chief complaint here..."></textarea>
+        <button onclick="generateMDM()">Generate MDM</button>
+        
+        <div id="mdmOutput"></div>
+    </div>
+
+    <script>
+        function generateMDM() {
+            const chiefComplaint = document.getElementById("chiefComplaint").value.trim();
+            if (chiefComplaint === "") {
+                alert("Please enter a chief complaint.");
+                return;
+            }
+
+            let mdmText = "";
+
+            // Simple logic for generating MDM based on chief complaint (expandable with more conditions)
+            if (chiefComplaint.toLowerCase().includes("chest pain")) {
+                mdmText = `The patient presents with chest pain. Differential diagnosis includes myocardial infarction, unstable angina, and musculoskeletal pain. A 12-lead ECG was obtained and showed no signs of ischemia, and cardiac enzymes are negative. Given the patient's risk factors, further workup including a chest x-ray and a stress test will be ordered to rule out any underlying coronary artery disease. The patient will be monitored and reassessed as needed.`;
+            } else if (chiefComplaint.toLowerCase().includes("shortness of breath")) {
+                mdmText = `The patient presents with shortness of breath. Differential diagnosis includes acute asthma exacerbation, pneumonia, and congestive heart failure. A chest x-ray was obtained, which showed no signs of pneumonia or pulmonary edema. The patient's oxygen saturation improved after administration of bronchodilators. Given the lack of acute findings, the patient will be treated symptomatically and observed for response. Follow-up will be arranged as necessary.`;
+            } else if (chiefComplaint.toLowerCase().includes("abdominal pain")) {
+                mdmText = `The patient presents with abdominal pain. Differential diagnosis includes appendicitis, diverticulitis, and gastroenteritis. A physical examination revealed localized tenderness in the right lower quadrant, and laboratory tests indicate an elevated white blood cell count. Given the patient's clinical presentation and lab findings, a CT scan of the abdomen will be performed to evaluate for appendicitis. Pain management and IV fluids will be initiated while awaiting results.`;
+            } else {
+                mdmText = `The patient presents with a complaint of ${chiefComplaint}. A thorough history and physical exam will be performed, and appropriate diagnostic testing will be ordered based on the suspected differential diagnosis. Management will be tailored accordingly.`;
+            }
+
+            // Output the MDM paragraph
+            document.getElementById("mdmOutput").innerHTML = "<strong>MDM:</strong> " + mdmText;
+        }
+    </script>
+</body>
+</html>
